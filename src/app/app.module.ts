@@ -1,14 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { StockComponent } from './stock/stock.component';
+import { CuitComponent } from './cuit/cuit.component';
+import { SearchComponent } from './search/search.component';
+
+const appRoutes: Routes = [
+  { path: 'stock', component: StockComponent },
+  { path: 'cuit', component: CuitComponent },
+  { path: '', redirectTo: '/stock', pathMatch: 'full' }
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    StockComponent,
+    CuitComponent,
+    SearchComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
