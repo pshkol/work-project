@@ -1,3 +1,32 @@
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name="searchString" #str>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchStr(str.value)">Search</button>
+  </form>
+</nav>
+<table class="table" *ngIf="searchedData" class="searchedData table">
+  <thead>
+    <th>id</th>
+    <th>Nombre</th>
+    <th>Cantidad</th>
+  </thead>
+  <tbody *ngIf="!modify">
+    <tr *ngFor="let item of searchedData">
+      <td>{{item.id}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.stock}}</td>
+      <td><button type="button" name="button" class="btn btn-primary" (click)="modifyData()">Modificar</button></td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="modify">
+    <tr *ngFor="let item of searchedData">
+      <td>{{item.id}}</td>
+      <input type="text" value="{{item.nombre}}">
+      <input type="text" value="{{item.stock}}">
+      <td><button type="button" name="button" class="btn btn-primary" (click)="modifyData()">Ok</button></td>
+    </tr>
+  </tbody>
+</table>
 <table class="table">
   <thead>
     <th>id</th>
@@ -5,8 +34,11 @@
     <th>Cantidad</th>
   </thead>
   <tbody>
-    <td>1</td>
-    <td>Don Valentin Lacrado Clasico</td>
-    <td>200</td>
+    <tr *ngFor="let item of data">
+      <td>{{item.id}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.stock}}</td>
+      <td><button type="button" name="button" class="btn btn-primary">Modificar</button></td>
+    </tr>
   </tbody>
 </table>

@@ -2,6 +2,5 @@
   <nav-bar></nav-bar>
 </div>
 <div class="right col-md-10">
-  <search (search)="search($event)"></search>
-  <router-outlet></router-outlet>
+  <router-outlet (passData)="passData($event)"></router-outlet>
 </div>

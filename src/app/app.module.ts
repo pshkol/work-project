@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { StockComponent } from './stock/stock.component';
 import { CuitComponent } from './cuit/cuit.component';
-import { SearchComponent } from './search/search.component';
+
+import { StockService } from './services/StockService';
 
 const appRoutes: Routes = [
   { path: 'stock', component: StockComponent },
@@ -21,14 +22,13 @@ const appRoutes: Routes = [
     NavBarComponent,
     StockComponent,
     CuitComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: StockService, useClass: StockService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
