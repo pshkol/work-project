@@ -9,3 +9,9 @@ nav {
 .searchedData {
   margin: 50px 0;
 }
+
+.addItem {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+}

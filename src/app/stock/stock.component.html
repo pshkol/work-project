@@ -3,7 +3,13 @@
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name="searchString" #str>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchStr(str.value)">Search</button>
   </form>
+  <button type="button" class="btn btn-primary" name="button" (click)="addData()">Agregar Producto</button>
 </nav>
+<form class="form-inline addItem" *ngIf="add">
+  <input class="form-control mr-sm-2" type="text" placeholder="Nombre" #addNombre>
+  <input class="form-control mr-sm-2" type="number" placeholder="Stock" #addStock>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="addData(addNombre.value, addStock.value)">Agregar</button>
+</form>
 <table class="table" *ngIf="searchedData" class="searchedData table">
   <thead>
     <th>id</th>
@@ -20,10 +26,10 @@
   </tbody>
   <tbody *ngIf="modify">
     <tr *ngFor="let item of searchedData">
-      <td>{{item.id}}</td>
-      <input type="text" value="{{item.nombre}}">
-      <input type="text" value="{{item.stock}}">
-      <td><button type="button" name="button" class="btn btn-primary" (click)="modifyData()">Ok</button></td>
+      <td #data>{{item.id}}</td>
+      <input type="text" value="{{item.nombre}}" #nombre>
+      <input type="text" value="{{item.stock}}" #stock>
+      <td><button type="button" name="button" class="btn btn-primary" (click)="modifyData(data.textContent, nombre.value, stock.value)">Ok</button></td>
     </tr>
   </tbody>
 </table>

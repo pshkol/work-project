@@ -21,4 +21,16 @@ export class StockService {
 
     return data;
   }
+
+  searchDataById(id) {
+    for (let i = 0; i < this.getData().length; i++) {
+      if (this.getData()[i].id == id) {
+        return this.getData()[i];
+      }
+    }
+  }
+
+  addData(nombre, stock) {
+    this.getData().push({id: this.getData().length+1, nombre: nombre, stock: stock});
+  }
 }
